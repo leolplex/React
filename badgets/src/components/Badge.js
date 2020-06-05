@@ -13,18 +13,18 @@ class Badge extends React.Component {
         <div className="Badge__section-name">
           <img
             className="Badge__avatar"
-            src="https://avatars2.githubusercontent.com/u/11394398?s=400&u=ac26727749edee2cc3424428cbaaa5e67819f9fa&v=4"
+            src={this.props.avatarUrl}
             alt="Avatar"
           ></img>
           <h1>
-            Daniel <br />
-            Romero
+            {this.props.firstName} <br />
+            {this.props.lastName}
           </h1>
         </div>
 
         <div className="Badge__section-info">
-          <h3>Agilista</h3>
-          <div>@leolplex</div>
+          <h3>{this.props.jobTitle}</h3>
+          <div>@{this.props.twitter}</div>
         </div>
 
         <div className="Badge__footer">#plexconf</div>
