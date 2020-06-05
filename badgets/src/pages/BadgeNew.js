@@ -3,6 +3,7 @@ import React from "react";
 import "./styles/BadgeNew.css";
 import header from "../images/badge-header.svg";
 import Navbar from "../components/Navbar";
+import BadgeForm from "../components/BadgeForm";
 import Badge from "../components/Badge";
 
 class BadgeNew extends React.Component {
@@ -16,7 +17,7 @@ class BadgeNew extends React.Component {
 
         <div className="container">
           <div className="row">
-            <div className="col">
+            <div className="col-6">
               <Badge
                 firstName="Daniel"
                 lastName="Romero"
@@ -24,6 +25,9 @@ class BadgeNew extends React.Component {
                 twitter="leolplex"
                 avatarUrl="https://avatars2.githubusercontent.com/u/11394398?s=400&u=ac26727749edee2cc3424428cbaaa5e67819f9fa&v=4"
               />
+            </div>
+            <div className="col-6">
+              <BadgeForm />
             </div>
           </div>
         </div>
