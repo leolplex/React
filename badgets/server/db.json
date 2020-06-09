@@ -460,19 +460,19 @@
       "id": "CfPp9tq"
     },
     {
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "jobTitle": "",
-      "twitter": "",
-      "avatarUrl": "http://gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?d=identicon",
+      "firstName": "Changes",
+      "lastName": "Two",
+      "email": "tw@gmail.com",
+      "jobTitle": "BackEnd",
+      "twitter": "plex",
+      "avatarUrl": "http://gravatar.com/avatar/8a8820f57bb04cf1e6e44a9c11a6e12f?d=identicon",
       "id": "zXJ5oeS"
     },
     {
       "firstName": "Lautaro",
       "lastName": "Martinez",
       "email": "lautaro@gmail.com",
-      "jobTitle": "Develioer",
+      "jobTitle": "Developer",
       "twitter": "lautyaro",
       "avatarUrl": "http://gravatar.com/avatar/6f51d5463dd690b74076f0afae42433a?d=identicon",
       "id": "jOZC4GB"
