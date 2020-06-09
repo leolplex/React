@@ -5,6 +5,9 @@ import header from "../images/platziconf-logo.svg";
 import BadgeForm from "../components/BadgeForm";
 import Badge from "../components/Badge";
 
+import api from "../api";
+import md5 from "md5";
+
 class BadgeNew extends React.Component {
   state = {
     form: {
@@ -13,6 +16,7 @@ class BadgeNew extends React.Component {
       email: "",
       jobTitle: "",
       twitter: "",
+      avatarUrl: "",
     },
   };
 
@@ -25,7 +29,23 @@ class BadgeNew extends React.Component {
     });
   };
 
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    this.setState({ loading: true, error: null });
+
+    try {
+      await api.badges.create(this.state.form);
+      this.setState({ loading: false });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
+  };
+
   render() {
+    const email = this.state.form.email;
+    const hash = md5(email);
+    this.state.form.avatarUrl = `http://gravatar.com/avatar/${hash}?d=identicon`;
+
     return (
       <React.Fragment>
         <div className="BadgeNew__hero">
@@ -45,12 +65,13 @@ class BadgeNew extends React.Component {
                 jobTitle={this.state.form.jobTitle || "JOB_TITLE"}
                 twitter={this.state.form.twitter || "FIRST_NAME"}
                 email={this.state.form.email || "EMAIL"}
-                avatarUrl="https://avatars2.githubusercontent.com/u/11394398?s=400&u=ac26727749edee2cc3424428cbaaa5e67819f9fa&v=4"
+                avatarUrl={this.state.form.avatarUrl || "AVATAR_URL"}
               />
             </div>
             <div className="col-6">
               <BadgeForm
                 onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
                 formValues={this.state.form}
               />
             </div>
