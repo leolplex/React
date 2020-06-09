@@ -4,12 +4,15 @@ import "./styles/BadgeNew.css";
 import header from "../images/platziconf-logo.svg";
 import BadgeForm from "../components/BadgeForm";
 import Badge from "../components/Badge";
+import PageLoading from "../components/PageLoading";
 
 import api from "../api";
 import md5 from "md5";
 
 class BadgeNew extends React.Component {
   state = {
+    loading: false,
+    error: null,
     form: {
       firstName: "",
       lastName: "",
@@ -36,12 +39,17 @@ class BadgeNew extends React.Component {
     try {
       await api.badges.create(this.state.form);
       this.setState({ loading: false });
+      this.props.history.push("/badges");
     } catch (error) {
       this.setState({ loading: false, error: error });
     }
   };
 
   render() {
+    if (this.state.loading) {
+      return <PageLoading />;
+    }
+
     const email = this.state.form.email;
     const hash = md5(email);
     this.state.form.avatarUrl = `http://gravatar.com/avatar/${hash}?d=identicon`;
@@ -73,6 +81,7 @@ class BadgeNew extends React.Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 formValues={this.state.form}
+                error={this.state.error}
               />
             </div>
           </div>

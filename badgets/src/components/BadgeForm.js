@@ -75,6 +75,10 @@ class BadgeForm extends React.Component {
             Save
           </button>
         </form>
+
+        {this.props.error && (
+          <p className="text-danger">{this.props.error.message}</p>
+        )}
       </div>
     );
   }
