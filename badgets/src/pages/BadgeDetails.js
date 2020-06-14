@@ -4,6 +4,7 @@ import './styles/BadgeDetails.css';
 import Badge from '../components/Badge';
 import platziconfLogoImage from '../images/platziconf-logo.svg';
 import { Link } from 'react-router-dom';
+import DeleteBadgeModal from '../components/DeleteBadgeModal';
 
 function BadgeDetails(props) {
   const badge = props.badge;
@@ -13,7 +14,7 @@ function BadgeDetails(props) {
         <div className="container">
           <div className="row">
             <div className="col-6">
-              <img src={platziconfLogoImage} alt="Logo de la conferencia"></img>
+              <img src={platziconfLogoImage} alt="Logo de la conferencia" />
             </div>
             <div className="col-6 BadgeDetails__hero-attendant-name">
               <h1>
@@ -49,7 +50,14 @@ function BadgeDetails(props) {
             </div>
 
             <div>
-              <button className="btn btn-danger">Eliminar</button>
+              <button onClick={props.onOpenModal} className="btn btn-danger">
+                Eliminar
+              </button>
+              <DeleteBadgeModal
+                isOpen={props.isOpen}
+                onClose={props.onCloseModal}
+                onDeleteBadge={props.onDeleteBadge}
+              />
             </div>
           </div>
         </div>
